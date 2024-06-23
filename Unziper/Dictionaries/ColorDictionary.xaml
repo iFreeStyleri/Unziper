@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="MouseOver" Color="#20a0ff"/>
+    <LinearGradientBrush x:Key="MainBackground" ColorInterpolationMode="ScRgbLinearInterpolation" SpreadMethod="Repeat" MappingMode="Absolute">
+        <GradientStop Color="#FF1E1E1E"/>
+        <GradientStop Color="#FF272727"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="TextColor" Color="White"/>
+    <SolidColorBrush x:Key="ProgressBar.Progress" Color="#20a0ff"/>
+    <SolidColorBrush x:Key="ProgressBar.Background" Color="#FFACACAC"/>
+    <SolidColorBrush x:Key="ProgressBar.Border" Color="#66000000"/>
+</ResourceDictionary>

@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+    <ApplicationIcon>death.ico</ApplicationIcon>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>
+    <SignAssembly>False</SignAssembly>
+    <Company>Flibustier</Company>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Views\Assets\folder.png" />
+    <None Remove="Views\Assets\info.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="death.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0-preview.4.24266.19" />
+    <PackageReference Include="SharpZipLib" Version="1.4.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Unziper.Core\Unziper.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Views\Assets\folder.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Views\Assets\info.png" />
+  </ItemGroup>
+
+</Project>
