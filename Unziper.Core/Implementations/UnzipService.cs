@@ -4,8 +4,6 @@ using Aspose.Zip.SevenZip;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Unziper.Core.Abstractions;
@@ -58,7 +56,7 @@ namespace Unziper.Core.Implementations
                 {
                     using var fileStream = new FileStream(filePath, FileMode.Open);
                     using var archive = new Archive(fileStream,
-                        new ArchiveLoadOptions { DecryptionPassword = !string.IsNullOrWhiteSpace(password) ? password : null, Encoding=Encoding.GetEncoding(866)});
+                        new ArchiveLoadOptions { DecryptionPassword = !string.IsNullOrWhiteSpace(password) ? password : null, Encoding = Encoding.GetEncoding(866) });
                     archive.ExtractToDirectory(directory);
                     return true;
                 }
@@ -76,7 +74,7 @@ namespace Unziper.Core.Implementations
                 try
                 {
                     using var archive = new RarArchive(filePath,
-                        new RarArchiveLoadOptions { DecryptionPassword = !string.IsNullOrWhiteSpace(password) ? password : null } );
+                        new RarArchiveLoadOptions { DecryptionPassword = !string.IsNullOrWhiteSpace(password) ? password : null });
                     archive.ExtractToDirectory(directory);
                     return true;
                 }
@@ -92,12 +90,12 @@ namespace Unziper.Core.Implementations
             var outputDirectory = Directory.CreateDirectory(Path.Combine(directory, "output"));
             var notifiers = new List<string>();
             var tasks = new List<Task>();
-            foreach(var file in filePaths)
+            foreach (var file in filePaths)
             {
                 var hasFileUnzip = false;
-                foreach(var password in Options.Passwords)
+                foreach (var password in Options.Passwords)
                 {
-                    if(await Unzip(file, outputDirectory.FullName, password))
+                    if (await Unzip(file, outputDirectory.FullName, password))
                     {
                         hasFileUnzip = true;
                         progressAction?.Invoke();

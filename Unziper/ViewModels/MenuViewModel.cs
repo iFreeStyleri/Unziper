@@ -1,16 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Win32;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Documents;
 using Unziper.Core.Abstractions;
-using Unziper.Core.Implementations;
 using Unziper.Utils;
 
 namespace Unziper.ViewModels
@@ -21,7 +17,7 @@ namespace Unziper.ViewModels
         private readonly IAsyncUnzipService _asyncUnzipService;
         private readonly IOptionService _optionService;
 
-        
+
         public AsyncRelayCommand UnzipCommand { get; set; }
         public AsyncRelayCommand AddPasswordsCommand { get; set; }
 

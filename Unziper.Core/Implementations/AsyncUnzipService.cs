@@ -1,6 +1,6 @@
-﻿using Aspose.Zip.Rar;
+﻿using Aspose.Zip;
+using Aspose.Zip.Rar;
 using Aspose.Zip.SevenZip;
-using Aspose.Zip;
 using System;
 using System.Collections.Generic;
 using System.IO;

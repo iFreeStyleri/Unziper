@@ -1,10 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Unziper.Core.Abstractions;
 using Unziper.Domain.Models;
@@ -25,7 +20,7 @@ namespace Unziper.Core.Implementations
         }
         public void Create()
         {
-            if(!Directory.Exists(_folderPath))
+            if (!Directory.Exists(_folderPath))
                 Directory.CreateDirectory(_folderPath);
             if (!File.Exists(FileOptionPath))
                 File.Create(Path.Combine(FileOptionPath)).Close();
@@ -35,7 +30,7 @@ namespace Unziper.Core.Implementations
         {
             var optJson = await File.ReadAllTextAsync(FileOptionPath);
             var options = JsonConvert.DeserializeObject<Options>(optJson);
-            if(options != null)
+            if (options != null)
             {
                 _options.Passwords = options.Passwords;
                 _options.ExtractDirectory = options.ExtractDirectory;
