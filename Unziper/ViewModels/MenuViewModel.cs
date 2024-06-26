@@ -17,16 +17,18 @@ namespace Unziper.ViewModels
         private readonly IAsyncUnzipService _asyncUnzipService;
         private readonly IOptionService _optionService;
 
-
+        
         public AsyncRelayCommand UnzipCommand { get; set; }
         public AsyncRelayCommand AddPasswordsCommand { get; set; }
 
-        [ObservableProperty] private bool isAsyncBruteForce;
-        [ObservableProperty] private bool hasUnzip;
-        [ObservableProperty] private bool hasVisibilityBar;
-        [ObservableProperty] private int allFiles;
-        [ObservableProperty] private int currentFile;
-        [ObservableProperty] private string unzipProgressText;
+        [ObservableProperty] private bool _isAsyncBruteForce;
+        [ObservableProperty] private bool _hasUnzip;
+        [ObservableProperty] private bool _hasVisibilityBar;
+        [ObservableProperty] private int _allFiles;
+        [ObservableProperty] private int _currentFile;
+        [ObservableProperty] private string _unzipProgressText;
+        [ObservableProperty] private bool _hasLoadedPassword;
+
 
         public MenuViewModel(IAsyncUnzipService asyncUnzipService, IUnzipService unzipService, IOptionService optionService)
         {
@@ -35,6 +37,7 @@ namespace Unziper.ViewModels
             _asyncUnzipService = asyncUnzipService;
             UnzipCommand = new AsyncRelayCommand(UnzipMethod);
             AddPasswordsCommand = new AsyncRelayCommand(AddPasswordsMethod);
+            HasLoadedPassword = optionService.HasLoadedPassword;
         }
 
         private async Task UnzipMethod()
@@ -62,6 +65,7 @@ namespace Unziper.ViewModels
                 var passwords = await File.ReadAllLinesAsync(fileDialog.FileName);
                 _optionService.SetPasswords(passwords);
                 await _optionService.Save();
+                HasLoadedPassword = _optionService.HasLoadedPassword;
                 MessageBox.Show("Пароли сохранены!");
             }
         }
